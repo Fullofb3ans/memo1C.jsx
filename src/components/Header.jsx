@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { SearchBar } from './SearchBar';
 
 export function Header() {
 	return (
@@ -20,6 +21,7 @@ export function Header() {
 						</li>
 					</ul>
 				</div>
+				<SearchBar />
 			</div>
 		</nav>
 	);

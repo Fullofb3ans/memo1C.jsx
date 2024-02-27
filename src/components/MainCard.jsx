@@ -1,9 +1,9 @@
 import Card from 'react-bootstrap/Card';
 
 export function MainCard(props) {
-	// console.log(props);
+	console.log(props);
 	return (
-		<Card style={{ width: '50rem', marginBottom: '30px' }}>
+		<Card style={{ width: '30rem', margin: '20px' }}>
 			<Card.Img variant="top" src={props.img} alt="" />
 			<Card.Body>
 				<Card.Title>Card Title</Card.Title>
