@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { SearchBar } from './SearchBar';
+import { DropdownAddit } from './DropdownAddit';
 
 export function Header() {
 	return (
@@ -12,6 +13,7 @@ export function Header() {
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				</button>
+				<DropdownAddit />
 				<SearchBar />
 			</div>
 		</nav>

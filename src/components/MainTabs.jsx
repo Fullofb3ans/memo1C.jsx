@@ -5,7 +5,7 @@ import { TabsLeftCol } from './TabsLeftCol';
 import { TabsContent } from './TabsContent';
 
 export function MainTabs(props) {
-	// console.log(props);
+	console.log(props);
 	return (
 		<div style={{ padding: '1%' }}>
 			<Tab.Container id="left-tabs-example" defaultActiveKey="СОЗДАНИЕ ПАРТНЕРА И КОНТРАГЕНТА">
@@ -15,8 +15,8 @@ export function MainTabs(props) {
 					</Col>
 
 					<Col sm={10}>
-						<Tab.Content style={{ display: 'flex', flexWrap: 'wrap', gap: '5%' }}>
-							<TabsContent props={props.props} />
+						<Tab.Content style={{ display: 'flex', flexWrap: 'wrap' }}>
+							<TabsContent props={props.props} modal={props.modal} />
 						</Tab.Content>
 					</Col>
 				</Row>
