@@ -15,7 +15,7 @@ export function MainTabs(props) {
 					</Col>
 
 					<Col sm={10}>
-						<Tab.Content style={{ display: 'flex', flexWrap: 'wrap' }}>
+						<Tab.Content style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
 							<TabsContent props={props.props} modal={props.modal} />
 						</Tab.Content>
 					</Col>
