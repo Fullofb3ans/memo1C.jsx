@@ -12,24 +12,32 @@ app = FastAPI()
 #app.mount("/static", StaticFiles(directory="public", html=True))
 #app.mount("/static", StaticFiles(directory="/", html=True))
 
+link = "https://66b7-176-15-251-130.ngrok-free.app/"
+
 origins = [
-    "https://127.0.0.1:8000",
-    "https://localhost:8000"
+    link#,
+    #"https://127.0.0.1:8000",
+    #"https://localhost:8000"
 ]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["GET", "POST"], #, "OPTIONS", "DELETE", "PATH", "PUT"],
+    allow_methods=["GET", "POST"],#, "OPTIONS", "DELETE", "PATH", "PUT"],
     allow_headers=["Content-Type", "Accept", "Location", "Allow", "Content-Disposition", "Sec-Fetch-Dest"],
 )
 
 
 
-@app.get("/")
+app.mount("/static", StaticFiles(directory="public", html=True))
+app.mount("/static", StaticFiles(directory="/", html=True))
+
+
+
+@app.get("/", response_class=HTMLResponse)
 def root():
-    return RedirectResponse("http://127.0.0.1:3000")
+    return RedirectResponse(f"{link}static/menu.html")
 
 
 
@@ -57,7 +65,7 @@ def menu_plus():
 
     j=0
     HEADERS = []
-    for i in range(2, sheet.max_row+1):
+    for i in range(2, 98):
         header = sheet[f"A{i}"].value
         if header not in HEADERS:
             j+=1
@@ -66,9 +74,9 @@ def menu_plus():
     MENU = dict()
     for header in HEADERS:
         MENU[header] = []
-        for i in range(2, sheet.max_row+1):
+        for i in range(2, 98):
             hdr = sheet[f"A{i}"].value
-            if (hdr == header):# or (hdr.lower() in header.lower()):
+            if (hdr != None) and (hdr == header):# or (hdr.lower() in header.lower()):
                 card = {
                     "id" : i,
                     "name" : sheet[f"A{i}"].value,
@@ -90,7 +98,7 @@ def byname(name):
     CARDS = []
     for i in range(2, sheet.max_row+1):
         nm = sheet[f"A{i}"].value
-        if (nm == name) or (name.lower() in nm.lower()):
+        if (nm != None) and ((nm == name) or (name.lower() in nm.lower())):
             card = {
                 "id" : i,
                 "name" : sheet[f"A{i}"].value,
@@ -111,7 +119,7 @@ def bytext(text):
     for i in range(2, sheet.max_row+1):
         nm = sheet[f"A{i}"].value
         txt = sheet[f"B{i}"].value
-        if (sheet[f"A{i}"].value == text) or (text.lower() in nm.lower()) or (text.lower() in txt.lower()):
+        if (txt != None) and ((sheet[f"A{i}"].value == text) or (text.lower() in nm.lower()) or (text.lower() in txt.lower())):
             card = {
                 "id" : i,
                 "name" : sheet[f"A{i}"].value,
@@ -122,7 +130,28 @@ def bytext(text):
     
     return CARDS
 
+@app.get("/application")
+def application():
+    text = "ПРИЛОЖЕНИЕ"
+    wb = load_workbook('list.xlsx')
+    sheet = wb['all']
+
+    CARDS = []
+    for i in range(2, sheet.max_row+1):
+        nm = sheet[f"A{i}"].value
+        if (nm != None) and ((sheet[f"A{i}"].value == text) or (text.lower() in nm.lower())):
+            card = {
+                "id" : i,
+                "name" : sheet[f"A{i}"].value,
+                "text" : sheet[f"B{i}"].value,
+            }
+            CARDS.append(card)
+    
+    return CARDS
+
 #в конце
-@app.get("/imgs/{file}")
+@app.get("img/{file}")
 def files(file: str):
-    return RedirectResponse(f"http://127.0.0.1:8000/imgs/{file}")
+    #/imgs/1_1.jpg
+    file = "/" + file
+    return FileResponse(file) 

@@ -5,18 +5,18 @@ import { TabsLeftCol } from './TabsLeftCol';
 import { TabsContent } from './TabsContent';
 
 export function MainTabs(props) {
-	console.log(props);
 	return (
 		<div style={{ padding: '1%' }}>
-			<Tab.Container id="left-tabs-example" defaultActiveKey="СОЗДАНИЕ ПАРТНЕРА И КОНТРАГЕНТА">
+			<Tab.Container id="controlled-tab-example" activeKey={props.keyp} onSelect={(k) => props.setKey(k)} className="mb-3">
 				<Row>
 					<Col sm={2}>
 						<TabsLeftCol props={props.props} />
 					</Col>
 
 					<Col sm={10}>
-						<Tab.Content style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
-							<TabsContent props={props.props} modal={props.modal} />
+						<h2>{props.keyp}</h2>
+						<Tab.Content style={{ display: 'flex', flexWrap: 'wrap' }}>
+							<TabsContent application={props.application} activeKey={props.activeKey} searchResult={props.searchResult} props={props.props} modal={props.modal} />
 						</Tab.Content>
 					</Col>
 				</Row>

@@ -14,21 +14,4 @@ export function MainCard(props) {
 			</Card.Body>
 		</Card>
 	);
-	// return (
-	// 	<Stack direction="horizontal" gap={3}>
-	// 		{/* {Array.from({ length: 4 }).map((_, idx) => ( */}
-
-	// 		<div className="p-2">
-	// 			<Card>
-	// 				<Card.Img variant="top" src={props.img} />
-	// 				<Card.Body>
-	// 					<Card.Title>Card title</Card.Title>
-	// 					<Card.Text>
-	// 						<span dangerouslySetInnerHTML={{ __html: props.text }}></span>
-	// 					</Card.Text>
-	// 				</Card.Body>
-	// 			</Card>
-	// 		</div>
-	// 	</Stack>
-	// );
 }
