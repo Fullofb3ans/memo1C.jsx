@@ -12,7 +12,7 @@ app = FastAPI()
 #app.mount("/static", StaticFiles(directory="public", html=True))
 #app.mount("/static", StaticFiles(directory="/", html=True))
 
-link = "https://66b7-176-15-251-130.ngrok-free.app/"
+link = "https://36ad-217-118-90-182.ngrok-free.app/"
 
 origins = [
     link#,
@@ -120,10 +120,31 @@ def bytext(text):
         nm = sheet[f"A{i}"].value
         txt = sheet[f"B{i}"].value
         if (txt != None) and ((sheet[f"A{i}"].value == text) or (text.lower() in nm.lower()) or (text.lower() in txt.lower())):
+            Mesg = sheet[f"B{i}"].value
+            msg = Mesg.lower()
+
+            fnd = text.lower()
+            start_i = []
+            
+            while msg.find(fnd) != -1:
+                i = msg.find(fnd)
+                start_i.append(i + len(fnd)*len(start_i))
+                print(msg)
+                print(msg[i:i+len(fnd)])
+                msg = msg[:i] + msg[i+len(fnd):]
+                
+            
+            if start_i != []:
+                for i in start_i:
+                    end_i = i + len(fnd)
+                    Mesg = Mesg[: i] + "<span class =\'target\'>" + Mesg[i : end_i] + "</span>" + Mesg[end_i :]
+                
+
+
             card = {
                 "id" : i,
                 "name" : sheet[f"A{i}"].value,
-                "text" : sheet[f"B{i}"].value,
+                "text" : Mesg,
                 "img" : sheet[f"C{i}"].value
             }
             CARDS.append(card)

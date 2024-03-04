@@ -1,9 +1,8 @@
 import Card from 'react-bootstrap/Card';
 
 export function MainCard(props) {
-	// console.log(props);
 	return (
-		<Card style={{ width: '35rem', margin: '20px' }}>
+		<Card>
 			<Card.Header style={{ fontWeight: 'bold' }}>{props.id + 1}</Card.Header>
 			<Card.Body>
 				{/* <Card.Title style={{ marginRight: '3%' }}></Card.Title> */}

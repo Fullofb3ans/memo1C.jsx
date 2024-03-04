@@ -6,6 +6,25 @@ img {
   cursor: pointer;
 }
 
+.card-img-top {
+  max-width: 100%;
+}
+
+.card {
+  max-width: 60%;
+  margin: 20px;
+}
+
+@media (min-width: 1px) and (max-width: 1200px) {
+  .card {
+    max-width: 100%;
+  }
+}
+
+.target {
+  background-color: #ff8d00ba;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

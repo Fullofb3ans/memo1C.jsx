@@ -14,7 +14,9 @@ function App() {
 	const [toSearch, setToSearch] = useState('пусто');
 	const [searchResult, setSearchResult] = useState([]);
 
-	const [activeKey, setKey] = useState('ЗАКАЗ КЛИЕНТА');
+	const [activeKey, setKey] = useState('СОЗДАНИЕ ПАРТНЕРА И КОНТРАГЕНТА');
+
+	console.log(props);
 
 	useEffect(() => {
 		fetch('http://127.0.0.1:8000/menu_plus')

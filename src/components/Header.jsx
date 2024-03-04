@@ -10,6 +10,9 @@ export function Header(props) {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container">
+				<h4 className="nav-link active" style={{ fontSize: '16px', fontWeight: 'bold' }}>
+					Инструкция по работе в 1С
+				</h4>
 				<a className="navbar-brand" href="./">
 					<img src="/favicon.ico" alt="ЭМК" style={{ height: '50px' }} />
 				</a>
