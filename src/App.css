@@ -2,8 +2,31 @@
   text-align: center;
 }
 
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
+.card {
+
+  /* background-color: #fff; */
+}
+
+a:hover {
+  color: #e36f02 !important;
+}
+
 img {
   cursor: pointer;
+}
+
+.searchTittle {
+  color: #0d6efd;
+  cursor: pointer;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.searchTittle:hover {
+  color: #e36f02
 }
 
 .card-img-top {
@@ -23,6 +46,30 @@ img {
 
 .target {
   background-color: #ff8d00ba;
+}
+
+table.iksweb {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  height: auto;
+}
+
+table.iksweb, table.iksweb td, table.iksweb th {
+  border: 1px solid #595959;
+}
+
+table.iksweb td, table.iksweb th {
+  padding: 3px;
+  width: 30px;
+  height: 35px;
+}
+
+table.iksweb th {
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  background: #ff580aba;
 }
 
 .App-logo {

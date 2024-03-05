@@ -35,6 +35,18 @@ function App() {
 		setToSearch(text);
 	};
 
+	let handleKeyPress = (e) => {
+		if (e.key === 'Enter') {
+			e.preventDefault();
+			searchByText();
+		}
+	};
+
+	let HandleKey = (e) => {
+		setKey(e);
+		document.querySelector('#root > nav').scrollIntoView({ behavior: 'smooth' });
+	};
+
 	let searchByText = () => {
 		console.log(toSearch);
 		fetch(`http://127.0.0.1:8000/search_by_text/${toSearch}`)
@@ -45,14 +57,14 @@ function App() {
 
 	return (
 		<>
-			<Header application={application} setKey={(e) => setKey(e)} addToSearch={addToSearch} search={(text) => searchByText(text)} />
+			<Header enter={handleKeyPress} application={application} setKey={(e) => HandleKey(e)} addToSearch={addToSearch} search={(text) => searchByText(text)} />
 			{imgModal === true ? <ImgModal close={closeModal} img={imgSrc} /> : ''}
 			<MainTabs
 				application={application}
 				activeKey={activeKey}
 				searchResult={searchResult}
 				keyp={activeKey}
-				setKey={(e) => setKey(e)}
+				setKey={(e) => HandleKey(e)}
 				props={props}
 				modal={(e) => {
 					showModal(true);

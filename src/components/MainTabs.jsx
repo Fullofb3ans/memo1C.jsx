@@ -15,9 +15,11 @@ export function MainTabs(props) {
 					</Col>
 
 					<Col sm={9}>
-						<h2 style={{ paddingLeft: '2%' }}>{props.keyp}</h2>
+						<h2 id="mainTitle" style={{ paddingLeft: '2%' }}>
+							{props.keyp}
+						</h2>
 						<Tab.Content style={{ display: 'flex', flexWrap: 'noWrap', paddingLeft: '2%', flexDirection: 'column' }}>
-							<TabsContent activeKey={props.activeKey} searchResult={props.searchResult} props={props.props} modal={props.modal} />
+							<TabsContent setKey={props.setKey} activeKey={props.activeKey} searchResult={props.searchResult} props={props.props} modal={props.modal} />
 						</Tab.Content>
 
 						<Tab.Content style={{ display: 'flex', flexWrap: 'noWrap', paddingLeft: '2%', flexDirection: 'column' }}>

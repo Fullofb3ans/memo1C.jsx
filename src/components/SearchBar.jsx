@@ -2,8 +2,9 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
 export function SearchBar(props) {
 	// console.log(props);
+
 	return (
-		<Container className="mt" style={{ margin: 'none' }}>
+		<Container className="mt" style={{ margin: 'none' }} onKeyDown={props.enter}>
 			<Row>
 				<Col sm={12}>
 					<Form className="d-flex">
