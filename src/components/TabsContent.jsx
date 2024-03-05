@@ -11,8 +11,8 @@ export function TabsContent(props) {
 				// console.log(item);
 				let index = props.searchResult.findIndex((c) => c.id === item.id);
 				return (
-					<Tab.Pane eventKey={'Поиск'}>
-						<MainCards setKey={props.setKey} part={item.name} search={search} props={item} index={index} modal={props.modal} />
+					<Tab.Pane key={item.id} eventKey={'Поиск'}>
+						<MainCards key={item.id} setKey={props.setKey} part={item.name} search={search} props={item} index={index} modal={props.modal} />
 					</Tab.Pane>
 				);
 			});
@@ -26,8 +26,8 @@ export function TabsContent(props) {
 					let index = i.findIndex((c) => c.id === item.id);
 					let search = false;
 					return (
-						<Tab.Pane eventKey={item.name}>
-							<MainCards part={item.name} search={search} props={item} index={index} modal={props.modal} />
+						<Tab.Pane key={item.id} eventKey={item.name}>
+							<MainCards key={item.id} part={item.name} search={search} props={item} index={index} modal={props.modal} />
 						</Tab.Pane>
 					);
 				}

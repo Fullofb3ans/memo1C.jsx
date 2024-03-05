@@ -20,9 +20,9 @@ function App() {
 	const [isLoading, setLoading] = useState(true);
 
 	// console.log(props);
-	useEffect(() => {
-		console.log(isLoading);
-	}, [isLoading]);
+	// useEffect(() => {
+	// 	console.log(isLoading);
+	// }, [isLoading]);
 
 	useEffect(() => {
 		setLoading(true);
