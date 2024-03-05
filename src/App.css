@@ -6,11 +6,6 @@
   font-family: 'Raleway', sans-serif;
 }
 
-.card {
-
-  /* background-color: #fff; */
-}
-
 a:hover {
   color: #e36f02 !important;
 }
@@ -63,6 +58,8 @@ table.iksweb td, table.iksweb th {
   padding: 3px;
   width: 30px;
   height: 35px;
+  vertical-align: top;
+
 }
 
 table.iksweb th {

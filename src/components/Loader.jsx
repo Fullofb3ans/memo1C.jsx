@@ -1,5 +1,5 @@
-import Spinner from 'react-bootstrap/Spinner';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 export function Loader() {
-	return <Spinner animation="border" />;
+	return <ProgressBar animated now={100} />;
 }

@@ -3,6 +3,7 @@ import { MainTabs } from './components/MainTabs';
 import { Header } from './components/Header';
 import { useEffect, useState } from 'react';
 import { ImgModal } from './components/ImgModal.jsx';
+import { Loader } from './components/Loader.jsx';
 
 function App() {
 	const [props, setProps] = useState([]);
@@ -16,12 +17,22 @@ function App() {
 
 	const [activeKey, setKey] = useState('СОЗДАНИЕ ПАРТНЕРА И КОНТРАГЕНТА');
 
-	console.log(props);
+	const [isLoading, setLoading] = useState(true);
+
+	// console.log(props);
+	useEffect(() => {
+		console.log(isLoading);
+	}, [isLoading]);
 
 	useEffect(() => {
+		setLoading(true);
 		fetch('http://127.0.0.1:8000/menu_plus')
 			.then((res) => res.json())
-			.then((data) => setProps([data]));
+			.then((data) => {
+				setProps([data]);
+				setLoading(false);
+			});
+
 		fetch('http://127.0.0.1:8000/application')
 			.then((res) => res.json())
 			.then((data) => setApplication([data]));
@@ -48,29 +59,37 @@ function App() {
 	};
 
 	let searchByText = () => {
-		console.log(toSearch);
+		setLoading(true);
+		console.log(isLoading);
 		fetch(`http://127.0.0.1:8000/search_by_text/${toSearch}`)
 			.then((res) => res.json())
-			.then((data) => setSearchResult(data));
-		setKey('Поиск');
+			.then((data) => {
+				setSearchResult(data);
+				setKey('Поиск');
+				setLoading(false);
+			});
 	};
 
 	return (
 		<>
 			<Header enter={handleKeyPress} application={application} setKey={(e) => HandleKey(e)} addToSearch={addToSearch} search={(text) => searchByText(text)} />
 			{imgModal === true ? <ImgModal close={closeModal} img={imgSrc} /> : ''}
-			<MainTabs
-				application={application}
-				activeKey={activeKey}
-				searchResult={searchResult}
-				keyp={activeKey}
-				setKey={(e) => HandleKey(e)}
-				props={props}
-				modal={(e) => {
-					showModal(true);
-					setSrc(e);
-				}}
-			/>
+			{isLoading === true ? (
+				<Loader />
+			) : (
+				<MainTabs
+					application={application}
+					activeKey={activeKey}
+					searchResult={searchResult}
+					keyp={activeKey}
+					setKey={(e) => HandleKey(e)}
+					props={props}
+					modal={(e) => {
+						showModal(true);
+						setSrc(e);
+					}}
+				/>
+			)}
 		</>
 	);
 }

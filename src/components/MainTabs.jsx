@@ -23,7 +23,7 @@ export function MainTabs(props) {
 						</Tab.Content>
 
 						<Tab.Content style={{ display: 'flex', flexWrap: 'noWrap', paddingLeft: '2%', flexDirection: 'column' }}>
-							{props.application.length !== 0 ? <TabsContentForApp props={props.application} activeKey={props.activeKey} modal={props.modal} /> : console.log(props.application + 'ПУСТО')}
+							{props.application.length !== 0 ? <TabsContentForApp props={props.application} activeKey={props.activeKey} modal={props.modal} /> : ''}
 						</Tab.Content>
 					</Col>
 				</Row>

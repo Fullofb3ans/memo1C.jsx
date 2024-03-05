@@ -2,9 +2,8 @@ import Tab from 'react-bootstrap/Tab';
 import { MainCards } from './MainCards';
 
 export function TabsContent(props) {
-	if (props.searchResult !== 'пуст' && props.activeKey == 'Поиск') {
-		console.log('1HEEYYYY');
-		if (props.searchResult.detail == 'Not Found' || props.searchResult.length == 0) {
+	if (props.searchResult !== 'пуст' && props.activeKey === 'Поиск') {
+		if (props.searchResult.detail === 'Not Found' || props.searchResult.length === 0) {
 			return <h4 style={{ padding: '1%' }}>По запросу ничего не найдено</h4>;
 		} else
 			return props.searchResult.map((item) => {
@@ -32,6 +31,7 @@ export function TabsContent(props) {
 						</Tab.Pane>
 					);
 				}
+				return null;
 			});
 		});
 	});
