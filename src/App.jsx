@@ -55,7 +55,7 @@ function App() {
 
 	let HandleKey = (e) => {
 		setKey(e);
-		document.querySelector('#root > nav').scrollIntoView({ behavior: 'smooth' });
+		document.querySelector('#root').scrollIntoView({ behavior: 'smooth' });
 	};
 
 	let searchByText = () => {
@@ -71,7 +71,7 @@ function App() {
 	};
 
 	return (
-		<>
+		<div>
 			<Header enter={handleKeyPress} application={application} setKey={(e) => HandleKey(e)} addToSearch={addToSearch} search={(text) => searchByText(text)} />
 			{imgModal === true ? <ImgModal close={closeModal} img={imgSrc} /> : ''}
 			{isLoading === true ? (
@@ -90,7 +90,7 @@ function App() {
 					}}
 				/>
 			)}
-		</>
+		</div>
 	);
 }
 
