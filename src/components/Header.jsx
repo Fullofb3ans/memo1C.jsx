@@ -8,7 +8,7 @@ import { DropdownAddit } from './DropdownAddit';
 export function Header(props) {
 	// console.log(props);
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light">
+		<nav id="headUp" className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container">
 				<h4 className="nav-link" style={{ fontSize: '16px', fontWeight: 'bold' }}>
 					Инструкция по работе в 1С

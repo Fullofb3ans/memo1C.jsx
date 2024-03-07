@@ -19,6 +19,8 @@ function App() {
 
 	const [isLoading, setLoading] = useState(true);
 
+	const link = '//1c-help.websto.pro';
+
 	// console.log(props);
 	// useEffect(() => {
 	// 	console.log(isLoading);
@@ -26,14 +28,14 @@ function App() {
 
 	useEffect(() => {
 		setLoading(true);
-		fetch('http://127.0.0.1:8000/menu_plus')
+		fetch(`${link}/menu_plus`)
 			.then((res) => res.json())
 			.then((data) => {
 				setProps([data]);
 				setLoading(false);
 			});
 
-		fetch('http://127.0.0.1:8000/application')
+		fetch(`${link}/application`)
 			.then((res) => res.json())
 			.then((data) => setApplication([data]));
 	}, []);
@@ -55,13 +57,13 @@ function App() {
 
 	let HandleKey = (e) => {
 		setKey(e);
-		document.querySelector('#root').scrollIntoView({ behavior: 'smooth' });
+		document.querySelector('#headUp').scrollIntoView({ behavior: 'smooth' });
 	};
 
 	let searchByText = () => {
 		setLoading(true);
 		console.log(isLoading);
-		fetch(`http://127.0.0.1:8000/search_by_text/${toSearch}`)
+		fetch(`${link}/search_by_text/${toSearch}`)
 			.then((res) => res.json())
 			.then((data) => {
 				setSearchResult(data);
@@ -71,7 +73,7 @@ function App() {
 	};
 
 	return (
-		<div>
+		<>
 			<Header enter={handleKeyPress} application={application} setKey={(e) => HandleKey(e)} addToSearch={addToSearch} search={(text) => searchByText(text)} />
 			{imgModal === true ? <ImgModal close={closeModal} img={imgSrc} /> : ''}
 			{isLoading === true ? (
@@ -90,7 +92,7 @@ function App() {
 					}}
 				/>
 			)}
-		</div>
+		</>
 	);
 }
 
